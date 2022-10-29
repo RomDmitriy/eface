@@ -1,0 +1,57 @@
+.page {
+position: relative;
+width: 1440px;
+height: 1024px;
+
+background: linear-gradient(180deg, #F2D16D 0%, #D94D1A 69.19%);
+}
+
+.icon {
+position: absolute;
+width: 70px;
+height: 70px;
+left: 685px;
+top: 159px;
+}
+
+.bg {
+position: absolute;
+width: 800px;
+height: 466px;
+left: 320px;
+top: 279px;
+
+background: #FFFFFF;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.photo {
+position: absolute;
+width: 771px;
+height: 442px;
+left: 335px;
+top: 291px;
+}
+
+button {
+position: absolute;
+width: 341px;
+height: 74px;
+left: 549px;
+top: 866px;
+
+background: #FFFFFF;
+box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.58);
+border-radius: 3px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 44px;
+/* identical to box height */
+
+text-transform: uppercase;
+
+color: #000000;
+}
