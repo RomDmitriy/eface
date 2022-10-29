@@ -1,0 +1,90 @@
+.page {
+position: relative;
+width: 1440px;
+height: 1024px;
+
+background: linear-gradient(180deg, #F2D16D 0%, #D94D1A 69.19%);
+}
+
+.title {
+position: absolute;
+width: 382px;
+height: 65px;
+left: 529px;
+top: 71px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 700;
+font-size: 48px;
+line-height: 65px;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.button_1 {
+position: absolute;
+width: 174px;
+height: 74px;
+left: 251px;
+top: 866px;
+
+background: #FFFFFF;
+box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.58);
+border-radius: 3px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 44px;
+/* identical to box height */
+
+text-transform: uppercase;
+
+color: #000000;
+}
+
+.button_2 {
+position: absolute;
+width: 174px;
+height: 74px;
+left: 1024px;
+top: 866px;
+
+background: #FFFFFF;
+box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.58);
+border-radius: 3px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 44px;
+/* identical to box height */
+
+text-transform: uppercase;
+
+color: #000000;
+
+}
+
+.img1 {
+position: absolute;
+width: 465px;
+height: 624px;
+left: 492px;
+top: 200px;
+}
+
+.img2 {
+position: absolute;
+width: 216px;
+height: 220px;
+left: 713px;
+top: 280px;
+}
