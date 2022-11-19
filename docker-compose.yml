@@ -17,19 +17,19 @@ services:
     logging: 
       driver: none
 
-  eface-api:
-    build: ./back/
-    # depends_on:
-    #   - backend-pg
-    ports:
-      - "3000:3000"
-    expose:
-      - 3000
-    restart: unless-stopped
+  # eface-api:
+  #   build: ./back/
+  #   # depends_on:
+  #   #   - backend-pg
+  #   ports:
+  #     - "3000:3000"
+  #   expose:
+  #     - 3000
+  #   restart: unless-stopped
   
-  frontend-ng:
-    build: ./front
-    ports:
-      - "80:80"
-    expose:
-      - 80
+  # frontend-ng:
+  #   build: ./front
+  #   ports:
+  #     - "80:80"
+  #   expose:
+  #     - 80
