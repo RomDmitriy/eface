@@ -1,0 +1,27 @@
+<div class="page">
+  <div class="main"></div>
+  <div class="header">
+    <p>login</p>
+  </div>
+  <div class="email">
+    <p>Email</p>
+    <label>
+      <input type="text" [src]="user.login">
+    </label>
+  </div>
+  <div class="password">
+    <p>Password</p>
+    <label>
+      <input type="password" [src]="user.password">
+    </label>
+    <a routerLink="/auth/forgot">Forgot your password?</a>
+  </div>
+  <div class="button">
+    <button (click)="login">login</button>
+  </div>
+  <div class="dont_have_acc">
+    <a routerLink="/auth/register">Don't have account yet?</a>
+  </div>
+  <div class="line_1"></div>
+  <div class="line_2"></div>
+</div>
