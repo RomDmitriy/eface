@@ -14,18 +14,18 @@ services:
     restart: always
     # command: ["postgres", "-c", "log_statement=all"]
     command: postgres -c 'max_connections=300'
-    logging: 
-      driver: none
+#    logging: 
+#      driver: none
 
-  # eface-api:
-  #   build: ./back/
-  #   # depends_on:
-  #   #   - backend-pg
-  #   ports:
-  #     - "3000:3000"
-  #   expose:
-  #     - 3000
-  #   restart: unless-stopped
+  eface-api:
+    build: ./back/
+    depends_on:
+      - backend-pg
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
+    restart: unless-stopped
   
   # frontend-ng:
   #   build: ./front

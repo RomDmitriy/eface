@@ -109,7 +109,7 @@ SET row_security = off;
 -- Name: eface; Type: DATABASE; Schema: -; Owner: postgres
 --
 
-CREATE DATABASE eface WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'en_US.utf8';
+CREATE DATABASE eface WITH TEMPLATE = template0 ENCODING = 'UTF8';
 
 
 ALTER DATABASE eface OWNER TO postgres;
