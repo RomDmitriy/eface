@@ -10,8 +10,11 @@ import {environment} from '../../environments/environment';
 export class AuthService {
 
   private apiUrl = {
+    // Вход в аккаунт
     check: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/auth/login',
+    // Регистрация нового аккаунта
     addUser: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/auth/register',
+    // Обновление токенов
     refreshTokens: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/auth/refresh',
 
 
