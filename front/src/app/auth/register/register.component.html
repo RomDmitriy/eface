@@ -3,18 +3,21 @@
   <div class="line_1"></div>
   <div class="registration">registration</div>
 
-  <div class="email">Email</div>
-  <input class="input_email" type="text">
-  <div class="line_2"></div>
+  <div [formGroup]="registerForm">
+    <div class="email">Email</div>
+    <input class="input_email" type="text" formControlName="email">
+    <div class="line_2"></div>
 
-  <div class="password">Password</div>
-  <input class="input_password" type="text">
-  <div class="line_3"></div>
+    <div class="password">Password</div>
+    <input class="input_password" type="password" formControlName="password">
+    <div class="line_3"></div>
 
-  <div class="repeat_password">Repeat password</div>
-  <div class="line_4"></div>
-  <input class="input_repeat_password" type="text">
+    <div class="repeat_password">Repeat password</div>
+    <div class="line_4"></div>
+    <input class="input_repeat_password" type="password" formControlName="verifyPassword">
 
-  <button>registration</button>
+    <button type="submit" (click)="register()">registration</button>
+  </div>
+
   <a class="login_link" routerLink="/auth/login">Login</a>
 </div>

@@ -11,25 +11,21 @@ export class AuthService {
 
   private apiUrl = {
     // Вход в аккаунт
-    check: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/auth/login',
+    check: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/login',
     // Регистрация нового аккаунта
-    addUser: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/auth/register',
+    addUser: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/register',
     // Обновление токенов
-    refreshTokens: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/auth/refresh',
-
-
+    refreshTokens: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/refresh'
   }
 
   constructor(
-    private httpClient: HttpClient,
-    private router: Router
+    private httpClient: HttpClient
   ) { }
 
   //Вход по логину и паролю
-  login(user: { login: string, password: string }): Observable<boolean> {
-    let url = this.apiUrl.check + '?login=' + user?.login + '&' + 'password=' + user?.password;
+  login(user: { email: string, password: string }): Observable<boolean> {
     //console.log(url);
-    return this.httpClient.get<any>(url)
+    return this.httpClient.post<any>(this.apiUrl.check, user)
       .pipe(
         tap(tokens => {
           console.log(tokens);
@@ -47,13 +43,12 @@ export class AuthService {
 
 
   //Добавление пользователя при регистрации
-  addUser(newUser: { login: string, password: string }): Observable<any> {
+  addUser(newUser: { email: string, password: string }): Observable<any> {
     console.log(newUser)
     return this.httpClient.post<any>(this.apiUrl.addUser, newUser)
       .pipe(
         tap(tokens => {
           console.log(tokens)
-          this.router.navigateByUrl("/auth/login");
         }),
         catchError(this.handleError));
   }
