@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  DB_EXTERNAL_IP: '89.109.8.173',
+  AUTH_PORT: '4800',
+  API_PORT: '5000',
 };
 
 /*
