@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  @@map("Users")
+  id              Int              @id @default(autoincrement())
+  email           String           @unique
+  password        String
+  emotion         Emote            @default(Neutral)
+  AdminPermission AdminPermission?
+}
+
+model AdminPermission {
+  @@map("AdminPermissions")
+  user_id Int   @id
+  userId  User  @relation(fields: [user_id], references: [id])
+}
+
+enum Emote {
+  @@map("Emotes")
+  Neutral
+  Happy
+  Sad
+}
