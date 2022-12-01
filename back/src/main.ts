@@ -10,7 +10,6 @@ async function bootstrap() {
         .setTitle('Eface')
         .setDescription('Eface API')
         .setVersion('1.0.0')
-        //.addTag('cats')
         .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('/', app, document);

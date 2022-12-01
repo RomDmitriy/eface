@@ -24,7 +24,11 @@ model AdminPermission {
 
 enum Emote {
   @@map("Emotes")
+  Anger
+  Fear
+  Astonishment
+  Joy
+  Sadness
+  Negation
   Neutral
-  Happy
-  Sad
 }

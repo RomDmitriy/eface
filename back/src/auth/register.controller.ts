@@ -1,6 +1,6 @@
 import { Controller, Post, Body, ConflictException } from '@nestjs/common';
 import { UserAuth } from './dto/userAuth.dto';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PrismaService } from 'src/prisma/prisma.service';
 import IJWTtokens from 'src/interfaces/jwtTokens.interface';
 import { AuthService } from './auth.service';
@@ -12,6 +12,7 @@ export class RegisterController {
     @Post()
     @ApiResponse({ status: 201, description: 'Пользователь успешно создан.'})
     @ApiResponse({ status: 409, description: 'Пользователь с таким Email уже существует.'})
+    @ApiTags('Auth')
     async createUser(@Body() newUserInfo: UserAuth): Promise<IJWTtokens> {
         try {
             // добавляем пользователя в БД
@@ -20,12 +21,11 @@ export class RegisterController {
                 select: {id: true}
             });
             // генерируем токены для входа
-            return this.authService.getTokens(newUser.id);
+            return this.authService.getTokens({id: newUser.id});
             //return null;
         }
         catch (err) {
             // если Email уже занят
-            console.log(err)
             throw new ConflictException();
         }
     }

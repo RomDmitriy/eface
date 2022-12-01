@@ -1,7 +1,7 @@
 import { Controller, Post, Body, HttpCode, NotFoundException } from '@nestjs/common';
 import { UserAuth } from './dto/userAuth.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { ApiResponse } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import IJWTtokens from 'src/interfaces/jwtTokens.interface';
 import { AuthService } from './auth.service';
 
@@ -13,6 +13,7 @@ export class LoginController {
     @HttpCode(200)
     @ApiResponse({ status: 200, description: 'Пользователь аутентифицирован.'})
     @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
+    @ApiTags('Auth')
     async authenticateUser(@Body() userData: UserAuth): Promise<IJWTtokens> {
         // ищем пользователя с такими данными
         // код кринжа, ибо дизайнеру сказали, что у админа должен быть доступ к просмотру почт и паролей в явном виде. Я знаю, что пароли надо хэшировать, но таково ТЗ.
@@ -32,6 +33,6 @@ export class LoginController {
         }
 
         // если пользователь найден, то генерируем и возвращаем токены
-        return this.authService.getTokens(user.id);
+        return this.authService.getTokens({id: user.id});
     }
 }
