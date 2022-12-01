@@ -2,22 +2,27 @@ import { Controller, Post, Body, HttpCode, NotFoundException } from '@nestjs/com
 import { UserAuth } from './dto/userAuth.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ApiResponse } from '@nestjs/swagger';
+import IJWTtokens from 'src/interfaces/jwtTokens.interface';
+import { AuthService } from './auth.service';
 
 @Controller('login')
 export class LoginController {
-    constructor(private readonly prismaService: PrismaService) {}
+    constructor(private readonly prismaService: PrismaService, private readonly authService: AuthService) {}
 
     @Post()
     @HttpCode(200)
     @ApiResponse({ status: 200, description: 'Пользователь аутентифицирован.'})
     @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
-    async authenticateUser(@Body() userData: UserAuth): Promise<void> {
+    async authenticateUser(@Body() userData: UserAuth): Promise<IJWTtokens> {
         // ищем пользователя с такими данными
         // код кринжа, ибо дизайнеру сказали, что у админа должен быть доступ к просмотру почт и паролей в явном виде. Я знаю, что пароли надо хэшировать, но таково ТЗ.
         const user = await this.prismaService.user.findFirst({
             where: {
                 email: userData.email,
                 password: userData.password
+            },
+            select: {
+                id: true
             }
         });
 
@@ -25,5 +30,8 @@ export class LoginController {
         if (user === null) {
             throw new NotFoundException();
         }
+
+        // если пользователь найден, то генерируем и возвращаем токены
+        return this.authService.getTokens(user.id);
     }
 }
