@@ -9,11 +9,11 @@ async function bootstrap() {
     const config = new DocumentBuilder()
         .setTitle('Eface')
         .setDescription('Eface API')
-        .setVersion('1.0')
+        .setVersion('1.0.0')
         //.addTag('cats')
         .build();
     const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('/api/doc', app, document);
+    SwaggerModule.setup('/', app, document);
 
     app.enableCors();
 
