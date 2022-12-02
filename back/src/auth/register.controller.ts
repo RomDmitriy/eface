@@ -1,8 +1,8 @@
-import { Controller, Post, Body, ConflictException } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, HttpStatus, ConflictException } from '@nestjs/common';
 import { UserAuth } from './dto/userAuth.dto';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PrismaService } from 'src/prisma/prisma.service';
-import IJWTtokens from 'src/interfaces/jwtTokens.interface';
+import IJWTtoken from 'src/interfaces/jwtToken.interface';
 import { AuthService } from './auth.service';
 
 @Controller('register')
@@ -10,18 +10,19 @@ export class RegisterController {
     constructor(private readonly prismaService: PrismaService, private readonly authService: AuthService) {}
 
     @Post()
+    @HttpCode(HttpStatus.CREATED)
     @ApiResponse({ status: 201, description: 'Пользователь успешно создан.'})
     @ApiResponse({ status: 409, description: 'Пользователь с таким Email уже существует.'})
     @ApiTags('Auth')
-    async createUser(@Body() newUserInfo: UserAuth): Promise<IJWTtokens> {
+    async createUser(@Body() newUserInfo: UserAuth): Promise<IJWTtoken> {
         try {
             // добавляем пользователя в БД
-            const newUser = await this.prismaService.user.create({
+            const user = await this.prismaService.user.create({
                 data: newUserInfo,
                 select: {id: true}
             });
             // генерируем токены для входа
-            return this.authService.getTokens({id: newUser.id});
+            return this.authService.getTokens({user});
             //return null;
         }
         catch (err) {
