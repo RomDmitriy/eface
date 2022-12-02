@@ -12,15 +12,15 @@ services:
     ports:
       - "5432:5432"
     restart: always
-    command: ["postgres", "-c", "log_statement=none", "-c", "max_connections=10"]
+    # command: ["postgres", "-c", "log_statement=none", "-c", "max_connections=10"]
     # command: postgres -c 'max_connections=300'
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 1s
       timeout: 1s
       retries: 20
-    # logging: 
-    #   driver: none
+    logging: 
+      driver: none
 
   eface-api:
     build: ./back/
