@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   backend-pg:
     image: postgres:14.4
@@ -6,29 +6,24 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "pivo"
       PGDATA: "/var/lib/postgresql/data/pgdata"
-    volumes:
-      - ./pg/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./pg:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    restart: always
-    command: ["postgres", "-c", "log_statement=none", "-c", "max_connections=10"]
-    # command: postgres -c 'max_connections=300'
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 1s
       timeout: 1s
       retries: 20
-    # logging: 
-    #   driver: none
+    volumes:
+      - ./pg/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./pg:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    command: ["postgres", "-c", "log_statement=none"]
 
   eface-api:
     build: ./back/
     depends_on:
       backend-pg:
         condition: service_healthy
-    environment:
-      - NODE_ENV=production
     ports:
       - "3000:3000"
     expose:

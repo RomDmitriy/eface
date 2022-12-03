@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { UserTokenInfoI } from 'src/interfaces/userTokenInfo.interface';
-import IJwtTokens from '../interfaces/jwtTokens.interface'
+import IJwtTokens from '../interfaces/jwtToken.interface'
 
 @Injectable()
 export class AuthService {
@@ -13,8 +13,7 @@ export class AuthService {
 
     async getTokens(user: UserTokenInfoI): Promise<IJwtTokens> {
         return {
-            accessToken: this.jwtService.sign({user, type: 'Access'}, {secret: this.configService.get('JWT_TOKEN'), expiresIn: 3600}),
-            refreshToken: this.jwtService.sign({user, type: 'Refresh'}, {secret: this.configService.get('JWT_TOKEN'), expiresIn: 2592000})
+            token: this.jwtService.sign({user}, {secret: this.configService.get('JWT_TOKEN')})
         }
     }
 }

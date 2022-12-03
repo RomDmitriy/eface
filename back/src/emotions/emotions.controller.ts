@@ -1,19 +1,35 @@
-import { Body, Controller, HttpCode, Put } from '@nestjs/common';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { UserAuth } from 'src/auth/dto/userAuth.dto';
-import IJWTtokens from 'src/interfaces/jwtTokens.interface';
+import { Body, Controller, HttpCode, HttpStatus, Put, Request, UseGuards, BadRequestException } from '@nestjs/common';
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Emote } from '@prisma/client';
+import { UpdateEmote } from 'src/auth/dto/updateEmote.dto';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+import { UserTokenInfoI } from 'src/interfaces/userTokenInfo.interface';
 import { PrismaService } from 'src/prisma/prisma.service';
 
-@Controller('emotions')
+@Controller('emotion')
 export class EmotionsController {
-    constructor(private readonly prismaService: PrismaService) {}
+    constructor(private readonly prismaService: PrismaService) { }
 
     @Put()
-    @HttpCode(200)
-    @ApiResponse({ status: 200, description: 'Эмоция обновлена'})
-    @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
-    @ApiTags('Auth')
-    async updateEmote(@Body() userData: UserAuth): Promise<IJWTtokens> {
-        return null;
+    @HttpCode(HttpStatus.OK)
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth()
+    @ApiResponse({ status: 200, description: 'Эмоция обновлена' })
+    @ApiTags('Emotes')
+    async updateEmote(@Body() req: UpdateEmote, @Request() jwtInfo: UserTokenInfoI): Promise<void> {
+        if (Emote[req.emote] === undefined ||
+            jwtInfo === undefined ||
+            jwtInfo.user === undefined ||
+            jwtInfo.user.id === undefined)
+            throw new BadRequestException();
+
+        await this.prismaService.user.update({
+            where: {
+                id: jwtInfo.user.id
+            },
+            data: {
+                emotion: Emote[req.emote]
+            }
+        });
     }
 }

@@ -1,0 +1,1 @@
+export enum EMOTES {'Anger', 'Fear', 'Astonishment', 'Joy', 'Sadness', 'Negation', 'Neutral'}
