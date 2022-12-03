@@ -1,9 +1,9 @@
 import { Controller, Get, HttpCode, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { JwtService } from '@nestjs/jwt';
-import { AdminGuard } from 'src/auth/guards/admin.guard';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { userInfoForAdminI } from 'src/interfaces/userInfoForAdmin.interface';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 
 @Controller('admin-panel')
 export class AdminPanelController {
@@ -11,7 +11,7 @@ export class AdminPanelController {
 
     @Get()
     @HttpCode(200)
-    @UseGuards(AdminGuard)
+    @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
     @ApiResponse({ status: 200, description: 'Эмоция обновлена'})
     @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
