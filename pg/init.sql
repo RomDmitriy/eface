@@ -112,7 +112,7 @@ SET row_security = off;
 CREATE DATABASE eface WITH TEMPLATE = template0 ENCODING = 'UTF8';
 
 
-ALTER DATABASE eface OWNER TO postgres;
+ALTER DATABASE eface OWNER TO api;
 
 \connect eface
 
