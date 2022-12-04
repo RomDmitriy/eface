@@ -1,9 +1,37 @@
-import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {catchError, Observable, of, mapTo} from 'rxjs';
+import {environment} from '../../environments/environment';
+
+export interface user {
+  email: string,
+  password: string
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor() { }
+  private apiUrl = {
+    // Получение списка аккаунтов
+    getUsers: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/admin-panel',
+
+  }
+
+  constructor(
+    private httpClient: HttpClient
+  ) {
+  }
+
+  getUsers(): Observable<user[]> {
+    let options = {
+      headers: new HttpHeaders()
+        .set('Authorization', localStorage.getItem('access_token') || '')
+    }
+
+    return this.httpClient.get<user[]>(this.apiUrl.getUsers, options)
+
+  }
+
 }

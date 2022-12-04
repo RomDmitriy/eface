@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AdminPanelRoutingModule } from './admin-panel-routing.module';
 import { AdminPanelComponent } from './admin-panel.component';
+import { MatTableModule } from '@angular/material/table'
+
+
+
 
 
 @NgModule({
@@ -11,7 +15,8 @@ import { AdminPanelComponent } from './admin-panel.component';
   ],
   imports: [
     CommonModule,
-    AdminPanelRoutingModule
+    AdminPanelRoutingModule,
+    MatTableModule
   ]
 })
 export class AdminPanelModule { }

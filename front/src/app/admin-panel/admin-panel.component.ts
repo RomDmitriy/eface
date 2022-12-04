@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {DataSource} from '@angular/cdk/table';
+import { AdminService } from '../services/admin.service';
+
+export interface PeriodicElement {
+  email: string;
+  password: string;
+}
 
 @Component({
   selector: 'app-admin-panel',
@@ -7,9 +14,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns: string[] = ['email', 'password'];
 
-  ngOnInit(): void {
+  dataSource: PeriodicElement[] = [
+    {email: 'loading...', password: 'loading...'},
+  ];
+
+  constructor(
+    private adminService: AdminService
+  ) {
+  }
+
+  ngOnInit() {
+    this.adminService.getUsers().subscribe(
+      data => {
+
+          this.dataSource=data
+
+      }
+    )
   }
 
   save(): void {
