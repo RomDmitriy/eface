@@ -4,6 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import IJWTtoken from 'src/interfaces/jwtToken.interface';
 import { AuthService } from './auth.service';
+import { JWTtoken } from './dto/jwtToken.dto';
 
 @Controller('login')
 export class LoginController {
@@ -11,7 +12,7 @@ export class LoginController {
 
     @Post()
     @HttpCode(HttpStatus.OK)
-    @ApiResponse({ status: 200, description: 'Пользователь аутентифицирован.'})
+    @ApiResponse({ status: 200, description: 'Пользователь аутентифицирован.', type: JWTtoken})
     @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
     @ApiTags('Auth')
     async authenticateUser(@Body() userData: UserAuth): Promise<IJWTtoken> {

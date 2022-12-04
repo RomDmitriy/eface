@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { userInfoForAdminI } from 'src/interfaces/userInfoForAdmin.interface';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+import { UserInfoForAdmin } from 'src/auth/dto/userInfoForAdmin.dto';
 
 @Controller('admin-panel')
 export class AdminPanelController {
@@ -13,7 +14,7 @@ export class AdminPanelController {
     @HttpCode(200)
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
-    @ApiResponse({ status: 200, description: 'Эмоция обновлена'})
+    @ApiResponse({ status: 200, description: 'Возврат списка.', type: UserInfoForAdmin, isArray: true})
     @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
     @ApiTags('Auth')
     async getUsersList(): Promise<userInfoForAdminI[]> {
