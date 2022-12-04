@@ -34,6 +34,6 @@ export class LoginController {
         }
 
         // если пользователь найден, то генерируем и возвращаем токены
-        return this.authService.getTokens({user});
+        return this.authService.getTokens(user);
     }
 }

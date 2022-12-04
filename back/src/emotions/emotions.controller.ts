@@ -19,13 +19,12 @@ export class EmotionsController {
     async updateEmote(@Body() req: UpdateEmote, @Request() jwtInfo: UserTokenInfoI): Promise<void> {
         if (Emote[req.emote] === undefined ||
             jwtInfo === undefined ||
-            jwtInfo.user === undefined ||
-            jwtInfo.user.id === undefined)
+            jwtInfo.id === undefined)
             throw new BadRequestException();
 
         await this.prismaService.user.update({
             where: {
-                id: jwtInfo.user.id
+                id: jwtInfo.id
             },
             data: {
                 emotion: Emote[req.emote]
