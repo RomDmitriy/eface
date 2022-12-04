@@ -1,3 +1,3 @@
 export default interface IJWTtoken {
-    token:  string;
+    access_token:  string;
 }

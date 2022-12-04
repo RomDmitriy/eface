@@ -4,6 +4,7 @@ import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PrismaService } from 'src/prisma/prisma.service';
 import IJWTtoken from 'src/interfaces/jwtToken.interface';
 import { AuthService } from './auth.service';
+import { JWTtoken } from './dto/jwtToken.dto';
 
 @Controller('register')
 export class RegisterController {
@@ -11,7 +12,7 @@ export class RegisterController {
 
     @Post()
     @HttpCode(HttpStatus.CREATED)
-    @ApiResponse({ status: 201, description: 'Пользователь успешно создан.'})
+    @ApiResponse({ status: 201, description: 'Пользователь успешно создан.', type: JWTtoken})
     @ApiResponse({ status: 409, description: 'Пользователь с таким Email уже существует.'})
     @ApiTags('Auth')
     async createUser(@Body() newUserInfo: UserAuth): Promise<IJWTtoken> {
