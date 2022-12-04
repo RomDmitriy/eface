@@ -22,7 +22,6 @@ export class RegisterController {
                 data: newUserInfo,
                 select: {id: true}
             });
-            console.log(user)
             // генерируем токены для входа
             return this.authService.getTokens(user);
             //return null;
