@@ -4,18 +4,8 @@
   height: 1024px;
 
   background: linear-gradient(180deg, #F2D16D 0%, #D94D1A 69.19%);
-}
-
-.main {
-  position: absolute;
-  width: 827px;
-  height: 538px;
-  left: 322px;
-  top: 214px;
-
-  background: #FFFFFF;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
+  font-family: 'Nunito', serif;
+  font-style: normal;
 }
 
 .title {
@@ -79,7 +69,7 @@
   left: 771px;
   top: 317px;
 
-  font-family: 'Nunito';
+
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -88,178 +78,6 @@
   color: #000000;
 }
 
-.mail1 {
-  position: absolute;
-  width: 92px;
-  height: 16px;
-  left: 586px;
-  top: 356px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-}
-
-.mail2 {
-
-  position: absolute;
-  width: 92px;
-  height: 16px;
-  left: 586px;
-  top: 382px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-
-}
-
-.mail3 {
-  position: absolute;
-  width: 92px;
-  height: 16px;
-  left: 586px;
-  top: 408px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-}
-
-.mail4 {
-  position: absolute;
-  width: 92px;
-  height: 16px;
-  left: 586px;
-  top: 434px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-}
-
-.num1 {
-  position: absolute;
-  width: 58px;
-  height: 16px;
-  left: 771px;
-  top: 356px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-
-}
-
-.num2 {
-  position: absolute;
-  width: 58px;
-  height: 16px;
-  left: 771px;
-  top: 382px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-}
-
-.num3 {
-
-  position: absolute;
-  width: 58px;
-  height: 16px;
-  left: 771px;
-  top: 408px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-
-}
-
-.num4 {
-  position: absolute;
-  width: 58px;
-  height: 16px;
-  left: 771px;
-  top: 434px;
-
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-
-  color: #000000;
-}
-
-.line1 {
-  position: absolute;
-  width: 297px;
-  height: 1px;
-  left: 571px;
-  top: 371px;
-
-  background: #F1D16D;
-}
-
-.line2 {
-  position: absolute;
-  width: 297px;
-  height: 1px;
-  left: 571px;
-  top: 397px;
-
-  background: #F1D16D;
-}
-
-.line3 {
-  position: absolute;
-  width: 297px;
-  height: 1px;
-  left: 571px;
-  top: 423px;
-
-  background: #F1D16D;
-}
-
-.line4 {
-  position: absolute;
-  width: 297px;
-  height: 1px;
-  left: 571px;
-  top: 449px;
-
-  background: #F1D16D;
-}
 
 .exit{
   position: absolute;
@@ -304,4 +122,43 @@
 
   color: #FFFFFF;
 
+}
+
+
+.table-container {
+  position: absolute;
+  left: 571px;
+  top: 316px;
+  width: 300px;
+  max-height: 300px;
+  overflow: auto;
+}
+
+.mat-mdc-header-cell {
+  background-color: #F1D16D !important;
+  border: none;
+}
+
+tr {
+  height:28px;
+}
+
+tr:hover{
+  background-color: #FFFFAF !important;
+}
+
+.mdc-data-table__cell {
+  border-bottom: 1px solid #F1D16D !important;
+}
+
+.container {
+  position: absolute;
+  width: 827px;
+  height: 538px;
+  left: 322px;
+  top: 214px;
+
+  background: #FFFFFF;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
 }

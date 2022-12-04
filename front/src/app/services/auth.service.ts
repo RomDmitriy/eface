@@ -24,13 +24,11 @@ export class AuthService {
 
   //Вход по логину и паролю
   login(user: { email: string, password: string }): Observable<boolean> {
-    //console.log(url);
     return this.httpClient.post<any>(this.apiUrl.check, user)
       .pipe(
         tap(tokens => {
           console.log(tokens);
           localStorage.setItem("access-token", tokens.access_token);
-          localStorage.setItem("refresh-token", tokens.refresh_token);
         }),
         mapTo(true),
         catchError(
@@ -49,6 +47,7 @@ export class AuthService {
       .pipe(
         tap(tokens => {
           console.log(tokens)
+          localStorage.setItem("access-token", tokens.access_token);
         }),
         catchError(this.handleError));
   }
