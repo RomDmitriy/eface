@@ -11,11 +11,11 @@ export class AuthService {
 
   private apiUrl = {
     // Вход в аккаунт
-    check: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/login',
+    check: environment.PROTOCOL + '://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/login',
     // Регистрация нового аккаунта
-    addUser: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/register',
+    addUser: environment.PROTOCOL + '://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/register',
     // Обновление токенов
-    refreshTokens: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/refresh'
+    refreshTokens: environment.PROTOCOL + '://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/refresh'
   }
 
   constructor(
