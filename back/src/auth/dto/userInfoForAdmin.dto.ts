@@ -10,7 +10,7 @@ export class UserInfoForAdmin {
         description: 'Электронная почта пользователя',
         default: 'ivashkin@mail.ru'
     })
-        email: string;
+        email?: string;
 
     @ApiProperty({
         description: 'Пароль пользователя',
@@ -18,5 +18,5 @@ export class UserInfoForAdmin {
         minimum: 8,
         maximum: 64
     })
-        password: string;
+        password?: string;
 }
