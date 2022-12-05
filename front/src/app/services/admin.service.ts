@@ -15,7 +15,7 @@ export class AdminService {
 
   private apiUrl = {
     // Получение списка аккаунтов
-    getUsers: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/admin-panel',
+    getUsers: environment.PROTOCOL + '://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/admin-panel',
   }
 
   constructor(
