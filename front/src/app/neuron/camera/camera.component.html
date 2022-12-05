@@ -1,6 +1,12 @@
 <div class="page">
   <img class="icon" src="./assets/camera/camera.png" alt="404">
   <div class="bg"></div>
-  <img class="photo" src="./assets/camera/camera.png" alt="404">
-  <button>fix an emotion</button>
+<!--  <img class="photo" src="./assets/camera/camera.png" alt="404">-->
+  <div class="webcam-container">
+    <webcam [width]="771"
+      [height]="442"
+            [trigger]="$trigger" (imageCapture)="snapshot($event)"
+    ></webcam>
+  </div>
+  <button  (click)="triggerSnapshot()">fix an emotion</button>
 </div>

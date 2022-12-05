@@ -16,7 +16,6 @@ export class AdminService {
   private apiUrl = {
     // Получение списка аккаунтов
     getUsers: 'http://' + environment.DB_EXTERNAL_IP + ':' + environment.AUTH_PORT + '/admin-panel',
-
   }
 
   constructor(
@@ -27,7 +26,7 @@ export class AdminService {
   getUsers(): Observable<user[]> {
     let options = {
       headers: new HttpHeaders()
-        .set('Authorization', localStorage.getItem('access_token') || '')
+        .set('Authorization', "Bearer " + localStorage.getItem('access-token') || 'ТОКЕН ПРОЕБАН ГДЕ-ТО')
     }
 
     return this.httpClient.get<user[]>(this.apiUrl.getUsers, options)
