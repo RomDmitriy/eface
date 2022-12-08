@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestComponent } from './services/test/test.component';
 import { MatTableModule } from '@angular/material/table';
+import {AuthGuard} from "./guards/auth.guard";
 
 
 
@@ -21,7 +22,7 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
