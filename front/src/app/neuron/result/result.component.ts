@@ -35,6 +35,20 @@ export class ResultComponent implements OnInit {
         this.image = this.neuronService.image
         // @ts-ignore
         this.emote = data;
+        // @ts-ignore
+        let arr = Object.values(this.emote);
+        // @ts-ignore
+        let min = Math.min(...arr);
+        // @ts-ignore
+        let max = Math.max(...arr);
+        let emoteName = '1';
+        for(let key in this.emote) {
+          // @ts-ignore
+          if (this.emote[key] == max) {
+            emoteName = key
+          }
+        }
+        alert(emoteName + ": " + max);
       })
   }
 }

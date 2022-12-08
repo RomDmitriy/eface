@@ -33,9 +33,13 @@ export class NeuronService {
       Fear: Math.random().toString(),
       Joy: Math.random().toString(),
       Negation: Math.random().toString(),
-      Neutral: Math.random().toString(),
-      Sadness: Math.random().toString()
+      Sadness: Math.random().toString(),
+      Neutral: Math.random().toString()
     }
+    random.Joy = (Math.random() * parseFloat(random.Sadness)).toString();
+    random.Astonishment = (Math.random() * parseFloat(random.Negation)).toString();
+    random.Fear = (Math.random() * parseFloat(random.Anger)).toString();
+    random.Neutral = (Math.random() * parseFloat(random.Neutral)).toString();
     const observable = new Observable<emotions>((subscriber) => {
       subscriber.next(random);
       subscriber.complete();
