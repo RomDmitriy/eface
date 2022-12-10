@@ -15,16 +15,19 @@ export class EmotionsController {
     @UseGuards(JwtAuthGuard)
     @ApiBearerAuth()
     @ApiResponse({ status: 200, description: 'Эмоция обновлена' })
+    @ApiResponse({ status: 404, description: 'Плохой запрос' })
     @ApiTags('Emotes')
     async updateEmote(@Body() req: UpdateEmote, @Request() jwtInfo: UserTokenInfoI): Promise<void> {
+        console.log(req.emote)
+        console.log(jwtInfo.user.id)
         if (Emote[req.emote] === undefined ||
             jwtInfo === undefined ||
-            jwtInfo.id === undefined)
+            jwtInfo.user.id === undefined)
             throw new BadRequestException();
 
         await this.prismaService.user.update({
             where: {
-                id: jwtInfo.id
+                id: jwtInfo.user.id
             },
             data: {
                 emotion: Emote[req.emote]

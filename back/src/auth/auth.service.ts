@@ -12,8 +12,9 @@ export class AuthService {
     ) { }
 
     async getTokens(user: UserTokenInfoI): Promise<IJwtTokens> {
+        const id: number = user.user.id;
         return {
-            access_token: this.jwtService.sign({user}, {secret: this.configService.get('JWT_TOKEN')})
+            access_token: this.jwtService.sign({user: {id: id}}, {secret: this.configService.get('JWT_TOKEN')})
         }
     }
 }

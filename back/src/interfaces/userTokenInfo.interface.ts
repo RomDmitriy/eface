@@ -1,3 +1,5 @@
 export interface UserTokenInfoI {
-    id: number;
+    user: {
+        id: number;
+    }
 }

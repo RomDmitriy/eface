@@ -23,7 +23,7 @@ export class RegisterController {
                 select: {id: true}
             });
             // генерируем токены для входа
-            return this.authService.getTokens(user);
+            return this.authService.getTokens({ user : user });
             //return null;
         }
         catch (err) {
