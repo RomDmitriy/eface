@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4200",
-    "build": "ng build",
+    "build": "ng build && rm -rf C://WebServerIIS/eface && cp -r dist/eface C://WebServerIIS/",
     "watch": "ng build --watch --configuration development",
     "copy": "cp dist C://web-server-iis/eface"
   },
