@@ -30,9 +30,9 @@ services:
       - 3000
     restart: unless-stopped
   
-  frontend-ng:
-    build: ./front
-    ports:
-      - "80:80"
-    expose:
-      - 80
+  # frontend-ng:
+  #   build: ./front
+  #   ports:
+  #     - "80:80"
+  #   expose:
+  #     - 80
