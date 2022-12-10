@@ -18,8 +18,6 @@ export class EmotionsController {
     @ApiResponse({ status: 404, description: 'Плохой запрос' })
     @ApiTags('Emotes')
     async updateEmote(@Body() req: UpdateEmote, @Request() jwtInfo: UserTokenInfoI): Promise<void> {
-        console.log(req.emote)
-        console.log(jwtInfo.user.id)
         if (Emote[req.emote] === undefined ||
             jwtInfo === undefined ||
             jwtInfo.user.id === undefined)
