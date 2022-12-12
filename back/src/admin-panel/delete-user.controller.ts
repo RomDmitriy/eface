@@ -14,7 +14,7 @@ export class DeleteUserController {
     @ApiBearerAuth()
     @ApiResponse({ status: 200, description: 'Пользователь удалён.'})
     @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
-    @ApiTags('Auth')
+    @ApiTags('Admin-panel')
     async getUsersList(@Body() userData: UserID): Promise<void> {
         try {
             await this.prismaService.user.delete({

@@ -15,7 +15,7 @@ export class getUsersController {
     @ApiBearerAuth()
     @ApiResponse({ status: 200, description: 'Возврат списка.', type: UserInfoForAdmin, isArray: true})
     @ApiResponse({ status: 404, description: 'Пользователь не найден.'})
-    @ApiTags('Auth')
+    @ApiTags('Admin-panel')
     async getUsersList(): Promise<userInfoForAdminI[]> {
         const users = await this.prismaService.user.findMany({
             select: {

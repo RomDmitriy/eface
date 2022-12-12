@@ -9,4 +9,4 @@ RUN npm run build
 #stage 2
 FROM nginx:stable
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=node /frontend/angular/dist/sakai /usr/share/nginx/html
+COPY --from=node /frontend/angular/dist/eface /usr/share/nginx/html
