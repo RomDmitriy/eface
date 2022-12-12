@@ -11,7 +11,6 @@ import {NeuronService} from 'src/app/services/neuron.service';
 })
 export class CameraComponent implements OnInit {
 
-
   // webcam snapshot trigger
   trigger: Subject<void> = new Subject<void>();
 
@@ -46,5 +45,4 @@ export class CameraComponent implements OnInit {
         );
       })
   }
-
 }

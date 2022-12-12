@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port=4200",
+    "start": "ng serve --port=5000",
     "build": "ng build && rm -rf C://WebServerIIS/eface && cp -r dist/eface C://WebServerIIS/",
     "watch": "ng build --watch --configuration development",
     "copy": "cp dist C://web-server-iis/eface"
@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~15.0.0",
     "@angular/platform-browser-dynamic": "~15.0.0",
     "@angular/router": "~15.0.0",
+    "faceapi": "^1.0.1",
     "moment": "^2.18.1",
     "ngx-webcam": "^0.4.1",
     "rxjs": "~7.4.0",

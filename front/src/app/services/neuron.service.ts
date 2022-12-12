@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { WebcamImage } from 'ngx-webcam';
 import { Observable } from 'rxjs';
 import {environment} from '../../environments/environment';
+const faceapi = require("faceapi")
 
 export interface emotions {
   Anger: string

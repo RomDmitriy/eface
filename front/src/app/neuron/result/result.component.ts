@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {WebcamImage} from 'ngx-webcam';
 import {NeuronService} from 'src/app/services/neuron.service';
 
@@ -23,8 +23,10 @@ export class ResultComponent implements OnInit {
   emote: emotions | undefined;
   image: string | undefined;
 
+  emoteLabel: string = 'Your emote: Unknown';
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private neuronService: NeuronService
   ) {
   }
@@ -48,7 +50,13 @@ export class ResultComponent implements OnInit {
             emoteName = key
           }
         }
+        this.emoteLabel = this.emoteLabel.replace('Unknown', emoteName) + " (" + max + ")"
         alert(emoteName + ": " + max);
       })
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.router.navigateByUrl('');
   }
 }

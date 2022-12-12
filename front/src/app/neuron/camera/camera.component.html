@@ -5,6 +5,7 @@
   <div class="webcam-container">
     <webcam [width]="771"
       [height]="442"
+            [mirrorImage]="'never'"
             [trigger]="$trigger" (imageCapture)="snapshot($event)"
     ></webcam>
   </div>
